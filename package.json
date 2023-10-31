@@ -1,0 +1,32 @@
+{
+  "name": "@hyrious/lbq",
+  "version": "0.1.0",
+  "description": "Simple command line task runner",
+  "keywords": [
+    "task"
+  ],
+  "license": "MIT",
+  "author": "hyrious <hyrious@outlook.com>",
+  "type": "module",
+  "exports": "./index.js",
+  "types": "./index.d.ts",
+  "bin": "./cli.js",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "cli.js"
+  ],
+  "scripts": {
+    "types": "tsc index.js --allowJs -d --emitDeclarationOnly"
+  },
+  "dependencies": {
+    "env-paths": "^3.0.0",
+    "tildify": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.9",
+    "eslint": "^8.52.0",
+    "eslint-config-sukka": "^4.1.7",
+    "typescript": "^5.2.2"
+  }
+}
