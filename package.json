@@ -5,6 +5,7 @@
   "keywords": [
     "task"
   ],
+  "repository": "hyrious/lbq",
   "license": "MIT",
   "author": "hyrious <hyrious@outlook.com>",
   "type": "module",
