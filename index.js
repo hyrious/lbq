@@ -77,13 +77,18 @@ export async function parse(args, options = {}) {
   })
 
   // 2. Parse arguments.
-  let command = null, matches = null
+  /** @type {((...args: any[]) => any) | null} */
+  let command = null
+  /** @type {(RegExpMatchArray | string | null)[] | null} */
+  let matches = null
   all: for (let n = args.length; n >= 1; n--) {
     for (const key in commands) {
       const [seq, callback] = commands[key]
       matches = args.slice(0, n).map((a, i) => a.match(seq[i]))
       if (matches.every(Boolean)) {
         command = callback
+        for (let i = n; i < args.length; i++)
+          matches.push(args[i])
         break all
       }
     }
