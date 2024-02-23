@@ -25,9 +25,10 @@
     "tildify": "^3.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20.8.9",
-    "eslint": "^8.52.0",
-    "eslint-config-sukka": "^4.1.7",
-    "typescript": "^5.2.2"
+    "@hyrious/configs": "^0.1.1",
+    "@types/node": "^20.11.20",
+    "eslint": "^8.56.0",
+    "eslint-config-sukka": "^5.1.2",
+    "typescript": "^5.3.3"
   }
 }

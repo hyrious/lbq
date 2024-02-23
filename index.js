@@ -63,7 +63,7 @@ export async function parse(args, options = {}) {
     return out
   }
 
-  mod.default(function register(/** @type {any[]} */...data) {
+  function register(/** @type {any[]} */...data) {
     const callback = data.pop()
     if (typeof callback !== 'function')
       throw new Error('Unexpected callback, expected function. ' + callback)
@@ -74,7 +74,10 @@ export async function parse(args, options = {}) {
     }
 
     commands[key] = [data, callback]
-  })
+  }
+
+  register.commands = commands
+  mod.default(register)
 
   // 2. Parse arguments.
   /** @type {((...args: any[]) => any) | null} */

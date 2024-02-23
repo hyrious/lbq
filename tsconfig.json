@@ -3,19 +3,5 @@
     "cli.js",
     "index.js"
   ],
-  "compilerOptions": {
-    "noEmit": true,
-    "allowJs": true,
-    "checkJs": true,
-    "stripInternal": true,
-    "strict": true,
-    "target": "ESNext",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "lib": [
-      "ESNext"
-    ],
-  }
+  "extends": "@hyrious/configs/tsconfig.casual.json"
 }
