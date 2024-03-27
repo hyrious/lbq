@@ -1,4 +1,5 @@
 import fs from 'node:fs'
+import url from 'node:url'
 import path from 'node:path'
 import tildify from 'tildify'
 import envPaths from 'env-paths'
@@ -46,7 +47,7 @@ export async function parse(args, options = {}) {
   if (!fs.existsSync(file))
     throw new Error(tildify(file) + ' not found.')
 
-  const mod = await import(file)
+  const mod = await import(url.pathToFileURL(file))
   /** @type {{ [seq: string]: [seq: any[], cb: (...a: any[]) => any] }} */
   const commands = Object.create(null)
 
