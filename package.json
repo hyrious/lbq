@@ -1,34 +1,30 @@
 {
   "name": "@hyrious/lbq",
-  "version": "0.1.2",
-  "description": "Simple command line task runner",
-  "keywords": [
-    "task"
-  ],
-  "repository": "hyrious/lbq",
-  "license": "MIT",
-  "author": "hyrious <hyrious@outlook.com>",
   "type": "module",
-  "exports": "./index.js",
-  "types": "./index.d.ts",
-  "bin": "./cli.js",
+  "version": "0.2.0",
+  "description": "Simple command line task runner written in Node.js",
+  "author": "hyrious <hyrious@outlook.com>",
+  "license": "MIT",
+  "repository": "hyrious/lbq",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": "dist/cli.js",
   "files": [
-    "index.js",
-    "index.d.ts",
-    "cli.js"
+    "dist"
   ],
   "scripts": {
-    "types": "tsc index.js --allowJs -d --emitDeclarationOnly"
+    "build": "tsc && jiti scripts/postbuild.ts"
   },
   "dependencies": {
-    "env-paths": "^3.0.0",
-    "tildify": "^3.0.0"
+    "clean-stack": "^5.2.0",
+    "jiti": "^2.5.1",
+    "launch-editor": "^2.11.1",
+    "sade": "^1.8.1"
   },
   "devDependencies": {
-    "@hyrious/configs": "^0.1.1",
-    "@types/node": "^20.11.20",
-    "eslint": "^8.56.0",
-    "eslint-config-sukka": "^5.1.2",
-    "typescript": "^5.3.3"
+    "@hyrious/configs": "^0.1.4",
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2",
+    "uvu": "^0.5.6"
   }
 }

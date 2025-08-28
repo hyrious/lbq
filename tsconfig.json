@@ -1,7 +1,13 @@
 {
-  "files": [
-    "cli.js",
-    "index.js"
-  ],
-  "extends": "@hyrious/configs/tsconfig.casual.json"
+  "include": ["src"],
+  "extends": "@hyrious/configs/tsconfig.casual.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "module": "NodeNext",
+    "target": "ES2024",
+    "rootDir": "src",
+    "outDir": "dist",
+    "declaration": true,
+    "stripInternal": true
+  }
 }
