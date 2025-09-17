@@ -11,8 +11,8 @@ importers:
   .:
     dependencies:
       clean-stack:
-        specifier: ^5.2.0
-        version: 5.2.0
+        specifier: ^5.3.0
+        version: 5.3.0
       jiti:
         specifier: ^2.5.1
         version: 2.5.1
@@ -27,8 +27,8 @@ importers:
         specifier: ^0.1.4
         version: 0.1.4
       '@types/node':
-        specifier: ^24.3.0
-        version: 24.3.0
+        specifier: ^24.5.1
+        version: 24.5.1
       typescript:
         specifier: ^5.9.2
         version: 5.9.2
@@ -41,11 +41,11 @@ packages:
   '@hyrious/configs@0.1.4':
     resolution: {integrity: sha512-EZGGqeBaSl+pngsRVYMyFBgYWFmlSw76UjsZLP8hHwNb0VMufhf4OtULWx5UHM228wJBC3vVZq0Tvqz0zikM8g==}
 
-  '@types/node@24.3.0':
-    resolution: {integrity: sha512-aPTXCrfwnDLj4VvXrm+UUCQjNEvJgNA8s5F1cvwQU+3KNltTOkBm1j30uNLyqqPNe7gE3KFzImYoZEfLhp4Yow==}
+  '@types/node@24.5.1':
+    resolution: {integrity: sha512-/SQdmUP2xa+1rdx7VwB9yPq8PaKej8TD5cQ+XfKDPWWC+VDJU4rvVVagXqKUzhKjtFoNA8rXDJAkCxQPAe00+Q==}
 
-  clean-stack@5.2.0:
-    resolution: {integrity: sha512-TyUIUJgdFnCISzG5zu3291TAsE77ddchd0bepon1VVQrKLGKFED4iXFEDQ24mIPdPBbyE16PK3F8MYE1CmcBEQ==}
+  clean-stack@5.3.0:
+    resolution: {integrity: sha512-9ngPTOhYGQqNVSfeJkYXHmF7AGWp4/nN5D/QqNQs3Dvxd1Kk/WpjHfNujKHYUQ/5CoGyOyFNoWSPk5afzP0QVg==}
     engines: {node: '>=14.16'}
 
   dequal@2.0.3:
@@ -91,8 +91,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  undici-types@7.10.0:
-    resolution: {integrity: sha512-t5Fy/nfn+14LuOc2KNYg75vZqClpAiqscVvMygNnlsHBFpSXdJaYtXMcdNLpl/Qvc3P2cB3s6lOV51nqsFq4ag==}
+  undici-types@7.12.0:
+    resolution: {integrity: sha512-goOacqME2GYyOZZfb5Lgtu+1IDmAlAEu5xnD3+xTzS10hT0vzpf0SPjkXwAw9Jm+4n/mQGDP3LO8CPbYROeBfQ==}
 
   uvu@0.5.6:
     resolution: {integrity: sha512-+g8ENReyr8YsOc6fv/NVJs2vFdHBnBNdfE49rshrTzDWOlUx4Gq7KOS2GD8eqhy2j+Ejq29+SbKH8yjkAqXqoA==}
@@ -103,11 +103,11 @@ snapshots:
 
   '@hyrious/configs@0.1.4': {}
 
-  '@types/node@24.3.0':
+  '@types/node@24.5.1':
     dependencies:
-      undici-types: 7.10.0
+      undici-types: 7.12.0
 
-  clean-stack@5.2.0:
+  clean-stack@5.3.0:
     dependencies:
       escape-string-regexp: 5.0.0
 
@@ -138,7 +138,7 @@ snapshots:
 
   typescript@5.9.2: {}
 
-  undici-types@7.10.0: {}
+  undici-types@7.12.0: {}
 
   uvu@0.5.6:
     dependencies:

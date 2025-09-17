@@ -16,14 +16,14 @@
     "build": "tsc && jiti scripts/postbuild.ts"
   },
   "dependencies": {
-    "clean-stack": "^5.2.0",
+    "clean-stack": "^5.3.0",
     "jiti": "^2.5.1",
     "launch-editor": "^2.11.1",
     "sade": "^1.8.1"
   },
   "devDependencies": {
     "@hyrious/configs": "^0.1.4",
-    "@types/node": "^24.3.0",
+    "@types/node": "^24.5.1",
     "typescript": "^5.9.2",
     "uvu": "^0.5.6"
   }

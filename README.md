@@ -26,14 +26,13 @@ Example config file:
 
 ```ts
 // {configPath}/lbq/index.ts
-import { defineConfig } from '/usr/local/lib/node_modules/lbq/dist/index.js'
-// ^ You can get the path with `lbq --location`, or just install lbq here.
+import { defineConfig } from 'lbq'
 
-export default defineConfig(register => {
+export default register => {
   register('hello', () => {
     console.log('world')
   })
-})
+}
 ```
 
 ## License
