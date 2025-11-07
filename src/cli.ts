@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import cp from 'node:child_process'
 import pkg from '../package.json' with { type: 'json'}
 import { configFile, defineConfig } from './index.js'
 
@@ -33,10 +34,10 @@ if (version) {
 }
 
 if (edit) {
-  const { default: launch } = await import('launch-editor')
   const file = configFile()
+  const dir = path.dirname(file)
   if (!fs.existsSync(file)) {
-    fs.mkdirSync(path.dirname(file), { recursive: true })
+    fs.mkdirSync(dir, { recursive: true })
     const configFileText = `
 type RegisterFunction = {
 \t(pattern: string | RegExp, run: (arg: RegExpMatchArray) => unknown, description?: string): void;
@@ -50,7 +51,20 @@ export default function install(register: RegisterFunction) {
 `.trimStart()
     fs.writeFileSync(file, configFileText)
   }
-  launch(path.dirname(file))
+  trySpawn(['subl', 'code', 'edit', 'vim'], ['.'], { cwd: dir })
+}
+
+function trySpawn(candidates: readonly string[], args: readonly string[], options: cp.ExecFileSyncOptions): void {
+  const file = candidates[0]
+  try {
+    cp.execFileSync(file, args, options)
+  } catch (err) {
+    if (candidates.length > 1 && err.code == 'ENOENT') {
+      trySpawn(candidates.slice(1), args, options)
+    } else {
+      throw err
+    }
+  }
 }
 
 if (location) {
