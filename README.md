@@ -2,6 +2,8 @@
 
 Simple command line task runner written in Node.js.
 
+GUI version: [LBQ App](https://github.com/hyrious/lbq-app).
+
 ## Usage
 
 ```console
@@ -25,10 +27,7 @@ You can use `lbq --edit` to open an editor in the config folder.
 Example config file:
 
 ```ts
-// {configPath}/lbq/index.ts
-import { defineConfig } from 'lbq'
-
-export default register => {
+export default function (register) {
   register('hello', () => {
     console.log('world')
   })
