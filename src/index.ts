@@ -65,7 +65,7 @@ export class Action {
     description?: string,
   ) {
     this.pattern = pattern
-    this.description = description || run.toString().replace(/\s+/g, ' ').trim()
+    this.description = description || ('\x1B[2m\x1B[3m' + run.toString().replace(/\s+/g, ' ').trim() + '\x1B[m')
     this.run = run
   }
 
@@ -73,13 +73,14 @@ export class Action {
     return Array.isArray(this.pattern) ? this.pattern.length : 1
   }
 
-  /** @internal */
+  /** @internal Count label display columns. */
+  get labelLength(): number {
+    return labelLength(this.pattern)
+  }
+
+  /** @internal Pattern with ascii escapes. */
   get label(): string {
-    if (Array.isArray(this.pattern)) {
-      return this.pattern.map(a => util.inspect(a)).join(' ')
-    } else {
-      return util.inspect(this.pattern)
-    }
+    return label(this.pattern)
   }
 
   /** @internal */
@@ -117,6 +118,33 @@ export class Action {
   }
 }
 
+function labelLength(pattern: string | RegExp | readonly (string | RegExp)[]): number {
+  if (Array.isArray(pattern)) {
+    return pattern.reduce((s: number, a: string | RegExp) => s + labelLength(a), 0) + pattern.length - 1;
+  }
+  if (typeof pattern == 'string' && !/[^\w\-]/.test(pattern)) {
+    return pattern.length
+  }
+  return util.inspect(pattern).length
+}
+
+function label(pattern: string | RegExp | readonly (string | RegExp)[]): string {
+  if (Array.isArray(pattern)) {
+    let out = ''
+    for (const item of pattern) {
+      if (out) out += ' ';
+      out += label(item)
+    }
+    return out
+  }
+  if (typeof pattern == 'string' && !/[^\w\-]/.test(pattern)) {
+    return `\x1B[33m${pattern}\x1B[m`
+  }
+  const s = util.inspect(pattern)
+  const e = typeof pattern == 'string' ? '\x1B[33m' : '\x1B[35m'
+  return `${e}${s}\x1B[m`
+}
+
 export interface IActionDefinition {
   pattern: string | RegExp | readonly (string | RegExp)[]
   run: (...args: unknown[]) => unknown
@@ -141,9 +169,9 @@ export class LBQ {
   readonly actions: Action[] = []
 
   list(): string[] {
-    const len = this.actions.reduce((max, action) => Math.max(max, action.label.length), 0) + 4
-    const arr: [string, string][] = this.actions.map(a => [a.label, a.description])
-    return arr.map(([label, description]) => label.padEnd(len) + (description || ''))
+    const len = this.actions.reduce((max, action) => Math.max(max, action.labelLength), 0) + 4
+    const arr: [number, string, string][] = this.actions.map(a => [a.labelLength, a.label, a.description])
+    return arr.map(([l, label, description]) => label + ' '.repeat(len - l) + (description || ''))
   }
 
   /**

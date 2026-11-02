@@ -85,7 +85,6 @@ if (!mod || !mod.default || typeof mod.default !== 'function') {
 
 const lbq = await defineConfig(mod.default)
 if (list) {
-  console.log('Available actions:')
   for (const line of lbq.list()) {
     console.log('  ' + line)
   }
